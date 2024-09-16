@@ -29,9 +29,9 @@ print(type(mystery_variable))
 
 # 7. Dynamic Typing Challenge: Assign a number to a variable named dynamicVar and the reassign a string value
 dynamicVar = 25
-print(dynamicVar)
+print(dynamicVar, type(dynamicVar))
 dynamicVar = "Today is Monday"
-print(dynamicVar)
+print(dynamicVar, type(dynamicVar))
 
 # 8. Keyword Examination: Write a schort script that tries to use if as a variable name.
 # if = "This will give me an error as you can't assign a variable to a Python keyword"
