@@ -1,0 +1,44 @@
+PYTHON KEYWORDS
+
+CONTROL FLOW
+if
+else
+elif
+while
+for
+break
+continue
+
+LOGICAL OPERATIONS
+and
+or
+not
+
+DATA STRUCTURES
+list
+dict
+set 
+tuple
+
+MISCELLANEOUS
+import
+from
+as
+with
+pass
+return
+yield
+raise
+try
+except
+finally
+is
+in
+def
+class
+lambda
+nonlocal
+global
+del
+assert
+async
