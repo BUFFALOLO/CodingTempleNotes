@@ -1,48 +1,63 @@
-"""
-PROJECT REQUIREMENTS
-1. User Interface (UI):
-    Create a command-line interface (CLI) for the To-Do List Application.
-    Display a welcoming message and a menu with the following options:
-        Welcome to the To-Do List App!
+task_list = []
 
-        Menu:
-        1. Add a task
-        2. View tasks
-        3. Mark a task as complete
-        4. Delete a task
-        5. Quit
+def add_task(status="Incomplete"):
+        task_name =  input("\nEnter the task you would like to add to your To-Do List: ")
+        task_list.append({task_name, status})
+        print(f"{task_name} has been added to the To-Do List.")
 
-2. To-Do List Features:
-    Implement the following features for the To-Do List:
-        Adding a task with a title (by default “Incomplete”).
-        Viewing the list of tasks with their titles and statuses (e.g., "Incomplete" or "Complete").
-        Marking a task as complete.
-        Deleting a task.
-        Quitting the application.
+        while True:
+            choice = input("\nWould you like to add another task? (yes/no): ").lower()
+            if choice == 'yes':
+                add_task()
+                break
+            elif choice == 'no':
+                print("\nYou will be returned to the main menu")
+                break
+            else:
+                print("\nYou have not made a valid entry - you will be returned to the main menu.")
+                break
 
-3. User Interaction:
-    Allow users to interact with the application by selecting menu options using input().
-    Implement input validation to handle unexpected user input gracefully.
+def view_tasks():
+    if task_list:
+        print("\nTo-Do List:")
+        for index, task in enumerate(task_list, start=1):
+            print(f"{index} - {task}")
+    else:
+        print("\nThe To-Do List is Empty")
 
-4. Error Handling:
-    Implement error handling using try, except, else, and finally blocks to handle potential issues.
+def mark_task_complete():
+    pass
 
-5. Code Organization:
-    Organize your code into functions to promote modularity and readability.
-    Use meaningful function names with appropriate comments and docstrings for clarity.
+def delete_task():
+    pass
 
-6. Testing & Debugging:
-    Thoroughly test your application to identify and fix any bugs.
-    Consider edge cases, such as empty task lists or incorrect user input.
+def quit_application():
+    pass
 
-7. Documentation: 
-    Include a README file that explains how to run the application and provides a brief overview of its features.
+while True:
+    try:
+        print("\nWelcome to the To-Do List App!")
+        print("\nMenu:")
+        print("1. Add a Task")
+        print("2. View tasks")
+        print("3. Mark a task as complete")
+        print("4. Delete a task")
+        print("5. Quit")
 
-8. Optional Features (Bonus):
-    If you feel adventurous, you can add extra features like task priorities, due dates, or color-coding tasks based on their status.
+        menu_choice = int(input("\nEnter a number from the menu: "))
 
-9. GitHub Repository:
-    Create a GitHub repository for your project.
-    Commit your code to the repository regularly.
-    Include a link to your GitHub repository in your project documentation.
-"""
+        if menu_choice == 1:
+          add_task()
+        elif menu_choice == 2:
+          view_tasks()
+        elif menu_choice == 3:
+            pass
+        elif menu_choice == 4:
+            pass
+        elif menu_choice == 5:
+            pass
+        else:
+            print("\nPlease make a valid menu choice, enter a number from 1 to 5.")
+
+    except ValueError:
+        print("\nPlease make a valid menu choice, enter a number from 1 to 5.")

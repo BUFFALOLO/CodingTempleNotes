@@ -287,7 +287,7 @@ while True:
         if "invalid literal" in str(ve):
             print("That's not a number. Please enter your age using digits")
         else:
-            prtin(ve)
+            print(ve)
     else:
         print(f"Thank you. Your age is recorded as {age}")
         break
