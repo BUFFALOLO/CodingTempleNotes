@@ -149,4 +149,157 @@ This can be achieved by sorting the keys first and then iterating through them.
 colors_count = {"red": 3, "blue": 4, "green": 1}
 for color in sorted(colors_count.keys()):
     print(f"{color}: {colors_count[color]}")
-    
+
+# update( ) method: Merges another dictionary or an iterable of key-value pairs into the current dictionary.
+default_settings = {"theme": "light", "notifications": "on"}
+print(default_settings)
+
+user_settings = {"theme": "dark"}
+default_settings.update(user_settings)
+print(default_settings) 
+
+add_setting = {"status": "active"}
+default_settings.update(add_setting)
+print(default_settings)
+
+# setdefault( ) method: Returns the value of a specified key. If the key is not found, inserts the key with the specified default value.
+stock = {"apples": 30, "oranges": 20}
+stock.setdefault("bananas", 0)
+print(stock)
+
+"""
+Copying can be compared to art replication techniques. 
+There are two primary methods: shallow copying, akin to taking a high qualify photograph of a painting, and 
+deep copying, which is like creating a detailed, independent reproduction of the original artwork.
+"""
+# Shallow Copy: A shallow copy of a dictionary is like taking a photograph of a painting. 
+# The photo captures the image on the surface, but it's still intrinsically linked to the original painting. 
+# In Python, this means the outer dictionary is duplicated, but the contents still reference the same objects. 
+original_artists = {"Picasso": 1881, "Van Gogh": 1853, "Monet": 1840}
+copied_artists = original_artists.copy()
+
+# Changing a value in the copied dictionary
+copied_artists["Van Gogh"] = 1900
+print("Original:", original_artists) #Original remains unchanged
+print("Copied:", copied_artists) #Copied reflects the change
+
+# Deep Copy: Conversely, a deep copy in Python is like creating a completely new and independent reproduction of an original painting. 
+# Every detail is recreated, ensuring that changes to the copy don’t affect the original. 
+import copy
+original_paintings = {"The Starry Night": "Van Gogh", "The Scream": "Munch"}
+reproduced_paintings = copy.deepcopy(original_paintings)
+
+# Changing a value in the deep copied dictionary
+reproduced_paintings["The Starry Night"] = "Da Vinci"
+print("Original:", original_paintings) #Original remains unchanged
+print("Reproduced:", reproduced_paintings) #Reproduced reflects the change
+
+# A shallow copy of a dictionary can lead to scenarios where changes in the copied dictionary inadvertently affect the original dictionary. 
+# This typically happens when the dictionary contains mutable objects like lists.
+
+# Original exhibit information
+museum_exhibit = {
+    "Ancient Vase": ["Greece", "Egypt"],
+    "Renaissance Painting": ["Italy", "France"]
+}
+
+# Creating a shallow copy
+exhibit_copy = museum_exhibit.copy()
+
+# Adding a new country to the Ancient Vase list in the copied dictionary
+exhibit_copy["Ancient Vase"].append("China")
+
+print("Original Exhibit:", museum_exhibit)
+print("Copied Exhibit:", exhibit_copy)
+
+"""
+In a shallow copy, changes made to a list within the copy are reflected in the original, as the copy retains references to the same objects. 
+It’s akin to a brochure linked directly to an exhibit’s artifacts, where modifications to the brochure impact the displayed information in the exhibit.
+
+When dealing with dictionaries containing mutable objects, it’s crucial to grasp that a shallow copy acts more like a mirrored reflection than a distinct entity. 
+Any changes made in the shallow copy also  impact the original dictionary. For scenarios requiring independent manipulation of copied data, opting for a deep copy is the more suitable choice. 
+"""
+
+"""
+Nested Collections: Navigating through nested collections in Python is akin to exploring a set of Russian nesting dolls, 
+where opening one doll reveals another smaller doll inside, and so on. In Python, this concept is mirrored through nested dictionaries and lists - 
+structures within structures, each holding its own data.
+
+Lists within Dictionaries: Diving deeper into the concept of lists within dictionaries, we can liken this structure to a meticulously organized shelf in a library. 
+Each section of the shelf (the key in the dictionary) is dedicated to a specific collection of items (the list). 
+This arrangement not only ensures orderliness but also offers an intuitive way to categorize and access groups of related items.
+"""
+library = {
+    "Fantasy": ["Harry Potter", "The Hobbit"],
+    "Science Fiction": ["Dune", "Neuromancer"],
+    "Mystery": ["Sherlock Holmes", "And Then There Were None"]
+}
+print(library)
+
+library["Fantasy"].append("The Name of the Wind")
+print(library)
+
+for book in library["Science Fiction"]:
+    print(book)
+
+for genre,  books in library.items():
+    print(f"Genre: {genre}")
+    for book in books:
+        print(f" - {book}")
+
+"""
+Dictionaries within Lists: Having dictionaries within a list can be metaphorically compared to a series of display cases in an art gallery. 
+Each display case, represented as an item in the list, serves as a unique exhibit - a dictionary - with its set of attributes and descriptions. 
+This organizational structure facilitates a methodical and detailed presentation of a collection of items, each distinct yet interconnected. 
+"""
+art_gallery = [
+    {"Title": "The Starry Night", "Artist": "Vincent van Gogh", "Year": 1889},
+    {"Title": "The Scream", "Artist": "Munch", "Year": 1893},
+    {"Title": "Guernica", "Artist": "Picasso", "Year": 1937}
+]
+
+art_gallery.append({"Title": "The Persistence of Memory", "Artist": "Dali", "Year": 1931})
+
+for artwork in art_gallery:
+    print(f"Title: {artwork['Title']}, Artist: {artwork['Artist']}, Year: {artwork['Year']}")
+
+"""
+Nested Dictionaries: Exploring nested dictionaries is like navigating a cabinet of curiosities. 
+Each drawer (outer dictionary) houses smaller compartments (inner dictionaries), each containing specific items (key-value pairs). 
+This layered structure mirrors the complexity of a cabinet, revealing details and information within each level.
+"""
+museum_exhibits = {
+    "Ancient Egypt": {
+        "Artifacts": ["Sphinx", "Pyramids"],
+        "Famous Pharaohs": ["Tutankhamun", "Cleopatra"]
+    },
+    "Renaissance Art": {
+        "Notable Artists": ["Da Vinci", "Michaelangelo"],
+        "Key Works": ["Mona Lisa", "The Last Supper"]
+    }
+}
+
+print(museum_exhibits)
+
+museum_exhibits["Ancient Egypt"]["Recent Discoveries"] = ["New Tomb", "Ancient Scrolls"]
+print(museum_exhibits)
+print(museum_exhibits["Ancient Egypt"])
+
+for exhibit, details in museum_exhibits.items():
+    print(f"Exhibit: {exhibit}")
+    for section, items in details.items():
+        print(f" {section}: {',' .join(items)}")
+
+"""
+Common mistakes in using dictionaries often revolve around misunderstandings of how dictionaries work or overlooking certain behaviors. Here are some common pitfalls:
+	Using Non-Immutable Types as Keys
+	Modifying Dictionary Size During Iteration
+	Assuming Dictionaries Are Ordered
+
+Tips for Clean & Efficient Dictionary Code
+	Use get( ) and setdefault( ) for Safe Access & Assignment
+	Leverage Dictionary Comprehensions for Efficiency
+	Iterate with items( ), keys( ) & values( ) when appropriate
+	Avoid redundant key lookups
+	Be mindful of memory usage with large dictionaries
+"""
