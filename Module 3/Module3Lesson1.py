@@ -119,3 +119,34 @@ session_data = {"user_id": 12345, "status": "active", "theme": "dark"}
 print(session_data)
 session_data.clear()
 print(session_data)
+
+"""
+Iterating over a Python dictionary is comparable to inspecting every room in a building or examining each book on a library shelf. 
+It involves a systematic examination of each piece of data within the dictionary. 
+Python offers various methods for iteration, providing access to keys, values, or both.
+"""
+# item( ) method: Returns a view object that displays a list of dictionary’s key-value tuple pairs.
+book_ratings = {"1984": 4.5, "To Kill a Mockingbird": 4.8, "Brave New World": 4.3}
+
+for book, rating in book_ratings.items():
+    print(f"{book} has a rating of {rating}")
+
+# keys( ) method: Returns a view object that displays a list of all the keys in the dictionary.
+user_profile = {"name": "Alice", "age": 30, "email": "alice@example.com"}
+
+for key in user_profile.keys():
+    print(key)
+
+# values( ) method: Returns a view object that displays a list of all the values in a dictionary.
+for value in user_profile.values():
+    print(value)
+
+"""
+Sometimes, you may want to iterate through a dictionary’s keys in a specific order, like alphabetical or numerical order. 
+This can be achieved by sorting the keys first and then iterating through them. 
+"""
+# The below example will print the keys in alphabetical order
+colors_count = {"red": 3, "blue": 4, "green": 1}
+for color in sorted(colors_count.keys()):
+    print(f"{color}: {colors_count[color]}")
+    
