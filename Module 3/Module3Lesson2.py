@@ -216,5 +216,3 @@ print(anthology)
 # Checking if an item exists in a tuple is like searching for a specific book in a collection.
 if "Odyssey" in literary_union:
     print("Epic tale found")
-
-# 
